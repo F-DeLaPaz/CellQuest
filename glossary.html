@@ -1,15 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>📚 Glossary - Cellular Dispatch</title>
+  <title>BioForge Glossary</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/script.js"></script>
 </head>
 <body>
   <aside class="sidebar">
     <h2>🧬 COO-Key</h2>
-    <img src="images/Coo-key.png" alt="COO-Key portrait" class="cookey-pic">
+    <div class="cookey-wrapper">
+      <img src="images/Coo-key.png" alt="COO-Key portrait" class="cookey-pic">
+      <div id="cookie-quote" class="speech-bubble"></div>
+    </div>
+    <button id="cookie-quote-btn">🔊 Hear from COO-Key</button>
+    <p><strong>COO-Key</strong> is the BioForge's Chief Operations Organizer — clipboard ready, bandana blazing, and lab-tested to lead missions.</p>
     <nav>
       <ul>
         <li><a href="index.html">🏠 Game Overview</a></li>
@@ -21,41 +26,63 @@
 
   <main>
     <header>
-      <h1>📚 Glossary of Terms</h1>
-      <p>Explore key science and game terms used throughout your missions.</p>
+      <h1>BioForge Glossary</h1>
+      <p>Reference guide for key terms, cells, and concepts used throughout your BioForge missions.</p>
     </header>
 
     <section>
-      <h2>🧪 Science Terms</h2>
-      <dl>
-        <dt><strong>Mitosis</strong></dt>
-        <dd>Cell division process where one cell splits into two identical daughter cells, essential for growth and healing.</dd>
-        <dt><strong>iPSCs (Induced Pluripotent Stem Cells)</strong></dt>
-        <dd>Stem cells engineered to become any type of cell via mitosis in the BioForge.</dd>
-        <dt><strong>Phagocyte</strong></dt>
-        <dd>A type of immune cell that engulfs and digests pathogens.</dd>
-        <dt><strong>Keratinocyte</strong></dt>
-        <dd>Skin cell type that rebuilds the barrier and helps seal wounds.</dd>
-        <dt><strong>Neuron</strong></dt>
-        <dd>Electrical signal-transmitting cells of the nervous system—not involved in healing skin.</dd>
-        <dt><strong>Erythrocyte</strong></dt>
-        <dd>Red blood cells that carry oxygen—not used in infection defense.</dd>
-      </dl>
+      <h2>🧬 Cell Types</h2>
+      <ul>
+        <li><strong>Phagocyte:</strong> Immune cell that engulfs and destroys pathogens and debris.</li>
+        <li><strong>Keratinocyte:</strong> Main skin cell responsible for rebuilding and maintaining the skin barrier.</li>
+        <li><strong>Mast Cell:</strong> Immune cell that releases histamine, triggering allergic responses.</li>
+        <li><strong>Goblet Cell:</strong> Specialized epithelial cell that secretes mucus for protecting mucosal surfaces.</li>
+        <li><strong>Melanocyte:</strong> Pigment-producing skin cell that generates melanin to protect from UV radiation.</li>
+        <li><strong>Cardiomyocyte:</strong> Specialized muscle cell responsible for heart contractions and heartbeat rhythm.</li>
+        <li><strong>Fibroblast:</strong> Connective tissue cell that builds extracellular matrix and supports tissue repair.</li>
+        <li><strong>Erythrocyte:</strong> Red blood cell that carries oxygen throughout the body (not part of defense systems).</li>
+        <li><strong>Neuron:</strong> Nerve cell that transmits electrical signals (not directly involved in repair or defense).</li>
+        <li><strong>Platelet:</strong> Small blood component that promotes blood clotting during injury.</li>
+        <li><strong>Osteocyte:</strong> Mature bone cell responsible for maintaining bone tissue integrity.</li>
+      </ul>
     </section>
 
     <section>
-      <h2>🎮 Game Terms</h2>
-      <dl>
-        <dt><strong>BioForge</strong></dt>
-        <dd>The central lab where iPSCs are mitotically cloned into specialized cells.</dd>
-        <dt><strong>CTS (Cellular Transport System)</strong></dt>
-        <dd>The internal body-wide logistics system used to deliver new cells to where they’re needed.</dd>
-        <dt><strong>Lymphatic Express</strong></dt>
-        <dd>Fun name for how immune cells (like phagocytes) travel—real-world route: lymphatic vessels.</dd>
-        <dt><strong>Slipstream EpiRail</strong></dt>
-        <dd>Game term for local delivery of keratinocytes via epithelial tissue.</dd>
-      </dl>
+      <h2>🧬 Biological Processes</h2>
+      <ul>
+        <li><strong>Mitosis:</strong> Cell division process generating identical cells for growth and repair.</li>
+        <li><strong>Apoptosis:</strong> Programmed cell death that safely eliminates damaged or unneeded cells.</li>
+        <li><strong>Fibrosis:</strong> Excessive connective tissue growth forming scar tissue after injury.</li>
+      </ul>
     </section>
+
+    <section>
+      <h2>🧬 BioForge Systems</h2>
+      <ul>
+        <li><strong>BioForge:</strong> The laboratory engine generating patient-specific stem cells via iPSCs to create replacement cells.</li>
+        <li><strong>CTS (Cellular Transport System):</strong> Routes generated cells via lymphatic or circulatory systems to target tissues.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🧬 Key Molecules & Factors</h2>
+      <ul>
+        <li><strong>Histamine:</strong> Chemical released by mast cells that triggers inflammation and allergy symptoms.</li>
+        <li><strong>Melanin:</strong> Pigment produced by melanocytes that protects skin from ultraviolet damage.</li>
+        <li><strong>UV Radiation:</strong> Ultraviolet light from sun exposure that can damage skin cells leading to sunburn.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🧬 Conditions (Bonus Diagnoses)</h2>
+      <ul>
+        <li><strong>Athlete’s Foot (Tinea Pedis):</strong> Fungal skin infection commonly affecting the feet, especially between toes.</li>
+        <li><strong>Allergic Conjunctivitis:</strong> Eye inflammation caused by allergic reactions to environmental allergens.</li>
+        <li><strong>Sunburn:</strong> Skin damage resulting from excessive UV exposure causing redness, pain, and peeling.</li>
+        <li><strong>Myocarditis:</strong> Inflammation of heart muscle tissue, often from infection or immune response, causing heart dysfunction.</li>
+      </ul>
+    </section>
+
   </main>
 </body>
 </html>
