@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Scenario 4: Cardiac Alarm</title>
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css" />
   <script defer src="../js/scenario4.js"></script>
+  <script defer src="../js/script.js"></script>
 </head>
 <body>
   <aside class="sidebar">
     <h2>🧬 COO-Key</h2>
-    <img src="../images/Coo-key.png" alt="COO-Key portrait" class="cookey-pic">
+    <div class="cookey-wrapper">
+      <img src="../images/Coo-key.png" alt="COO-Key portrait" class="cookey-pic" />
+      <div id="cookie-quote" class="speech-bubble"></div>
+    </div>
+    <button id="cookie-quote-btn">🔊 Hear from COO-Key</button>
     <p><strong>COO-Key</strong> is the BioForge's Chief Operations Organizer — clipboard ready, bandana blazing, and lab-tested to lead missions.</p>
+    <p><strong>Score:</strong> <span id="sidebarScore">0</span></p>
     <nav>
       <ul>
         <li><a href="../index.html">🏠 Game Overview</a></li>
-        <li><a href="scenario4.html">🚨 Scenario 4</a></li>
+        <li><a href="scenario4.html">❤️ Scenario 4</a></li>
         <li><a href="../glossary.html">📚 Glossary</a></li>
       </ul>
     </nav>
   </aside>
 
   <main>
-    <section>
-      <h2>🚨 Alert From: CTS Surveillance Node 12C</h2>
-      <p>Symptoms reported: Irregular heartbeat, dizziness, and fatigue. Possible cardiac tissue damage from previous viral infection.</p>
-    </section>
-
     <header>
       <h1>Scenario 4: Cardiac Alarm</h1>
+      <p>Alert: Cardiac tissue damage detected. Myocardial inflammation with scar tissue formation. Deploy cellular responders for heart repair and stabilization.</p>
     </header>
 
     <section>
       <h2>📋 Mission Brief</h2>
-      <p>Which cells should be dispatched from the BioForge to support heart tissue recovery?</p>
+      <p>Use your understanding of cardiac tissue repair to select the correct cell types that will support heart recovery after damage.</p>
     </section>
 
     <section>
@@ -41,8 +43,8 @@
         <fieldset>
           <legend>Choose all that apply (2 correct):</legend>
           <label><input type="checkbox" name="cell" value="cardiomyocyte"> Cardiomyocyte</label><br>
-          <label><input type="checkbox" name="cell" value="neuron"> Neuron</label><br>
           <label><input type="checkbox" name="cell" value="fibroblast"> Fibroblast</label><br>
+          <label><input type="checkbox" name="cell" value="neuron"> Neuron</label><br>
           <label><input type="checkbox" name="cell" value="platelet"> Platelet</label><br>
         </fieldset>
         <button type="submit">Submit</button>
@@ -53,17 +55,17 @@
       <h2>🧾 Dispatch Summary</h2>
       <p id="scoreSummary"></p>
       <ul id="feedbackList"></ul>
-      <p><strong>BioForge Output:</strong> 2 cells created via mitosis and delivered through the CTS (Cellular Transport System).</p>
+      <p><strong>BioForge Output:</strong> iPSCs generated hundreds of responders via mitosis and routed through the CTS.</p>
     </section>
 
     <section>
       <h2>🎲 Bonus Diagnosis</h2>
       <form id="bonusForm">
-        <p>Do you want to risk for bonus points?</p>
+        <p>Based on symptoms and response, what’s the most likely diagnosis?</p>
         <label><input type="radio" name="diagnosis" value="myocarditis"> Myocarditis</label><br>
-        <label><input type="radio" name="diagnosis" value="stroke"> Stroke</label><br>
         <label><input type="radio" name="diagnosis" value="arrhythmia"> Arrhythmia</label><br>
-        <label><input type="radio" name="diagnosis" value="pneumonia"> Pneumonia</label><br>
+        <label><input type="radio" name="diagnosis" value="heart_attack"> Heart Attack</label><br>
+        <label><input type="radio" name="diagnosis" value="hypertension"> Hypertension</label><br>
         <button type="submit">Submit Diagnosis</button>
       </form>
       <p id="bonusFeedback"></p>
@@ -74,9 +76,9 @@
       <p>Total Points: <span id="totalPoints">0</span></p>
     </section>
 
-   <nav class="nav-next">
-  <a href="../index.html">🏁 End of Demo — Return to BioForge HQ</a>
-	</nav>
+    <nav class="nav-next">
+      <a href="../index.html">🏁 Return to Main</a>
+    </nav>
   </main>
 </body>
 </html>

@@ -5,12 +5,18 @@
   <title>Scenario 2: The Itch Behind the Eye</title>
   <link rel="stylesheet" href="../css/styles.css" />
   <script defer src="../js/scenario2.js"></script>
+  <script defer src="../js/script.js"></script>
 </head>
 <body>
   <aside class="sidebar">
     <h2>🧬 COO-Key</h2>
-    <img src="../images/Coo-key.png" alt="COO-Key portrait" class="cookey-pic" />
+    <div class="cookey-wrapper">
+      <img src="../images/Coo-key.png" alt="COO-Key portrait" class="cookey-pic" />
+      <div id="cookie-quote" class="speech-bubble"></div>
+    </div>
+    <button id="cookie-quote-btn">🔊 Hear from COO-Key</button>
     <p><strong>COO-Key</strong> is the BioForge's Chief Operations Organizer — clipboard ready, bandana blazing, and lab-tested to lead missions.</p>
+    <p><strong>Score:</strong> <span id="sidebarScore">0</span></p>
     <nav>
       <ul>
         <li><a href="../index.html">🏠 Game Overview</a></li>
@@ -27,43 +33,47 @@
     </header>
 
     <section>
-      <h2>Mission Brief</h2>
+      <h2>📋 Mission Brief</h2>
       <p>Which cells do we need to create at the BioForge to handle this mucosal eye crisis? Select the correct responders using knowledge of mitosis and immune function.</p>
     </section>
 
     <section>
-      <h2>Choose Responders</h2>
+      <h2>🧪 Select Your Responders</h2>
       <form id="cellForm">
         <fieldset>
-          <legend>Select all that apply (2 correct):</legend>
-          <label><input type="checkbox" name="cell" value="mast" title="Releases histamines to initiate allergic response"> Mast Cell</label><br />
-          <label><input type="checkbox" name="cell" value="goblet" title="Secretes mucus to trap allergens"> Goblet Cell</label><br />
-          <label><input type="checkbox" name="cell" value="osteocyte" title="Maintains bone structure"> Osteocyte</label><br />
-          <label><input type="checkbox" name="cell" value="neuron" title="Transmits nerve impulses"> Neuron</label>
+          <legend>Choose all that apply (2 correct):</legend>
+          <label><input type="checkbox" name="cell" value="mast"> Mast Cell</label><br>
+          <label><input type="checkbox" name="cell" value="goblet"> Goblet Cell</label><br>
+          <label><input type="checkbox" name="cell" value="osteocyte"> Osteocyte</label><br>
+          <label><input type="checkbox" name="cell" value="neuron"> Neuron</label><br>
         </fieldset>
         <button type="submit">Submit</button>
       </form>
     </section>
 
     <section id="results" style="display:none;">
-      <h2>Dispatch Outcome</h2>
+      <h2>🧾 Dispatch Summary</h2>
       <p id="scoreSummary"></p>
-      <p><strong>CTS Delivery Summary:</strong></p>
-      <ul id="deliverySummary"></ul>
-      <p>This response uses iPSCs in the BioForge to generate cells via mitosis. The CTS (Cellular Transport System) deploys them quickly using the Lymphatic Express.</p>
+      <ul id="feedbackList"></ul>
+      <p><strong>BioForge Output:</strong> iPSCs generated hundreds of responders via mitosis and routed through the CTS.</p>
     </section>
 
     <section>
-      <h2>Bonus Diagnosis</h2>
+      <h2>🎲 Bonus Diagnosis</h2>
       <form id="bonusForm">
         <p>Based on symptoms and response, what’s the most likely diagnosis?</p>
-        <label><input type="radio" name="diagnosis" value="allergic_conjunctivitis"> Allergic Conjunctivitis</label><br />
-        <label><input type="radio" name="diagnosis" value="bacterial_conjunctivitis"> Pink Eye (Bacterial)</label><br />
-        <label><input type="radio" name="diagnosis" value="glaucoma"> Glaucoma</label><br />
-        <label><input type="radio" name="diagnosis" value="dry_eye"> Dry Eye Syndrome</label><br />
+        <label><input type="radio" name="diagnosis" value="allergic_conjunctivitis"> Allergic Conjunctivitis</label><br>
+        <label><input type="radio" name="diagnosis" value="bacterial_conjunctivitis"> Pink Eye (Bacterial)</label><br>
+        <label><input type="radio" name="diagnosis" value="glaucoma"> Glaucoma</label><br>
+        <label><input type="radio" name="diagnosis" value="dry_eye"> Dry Eye Syndrome</label><br>
         <button type="submit">Submit Diagnosis</button>
       </form>
       <p id="bonusFeedback"></p>
+    </section>
+
+    <section>
+      <h2>🏅 Score</h2>
+      <p>Total Points: <span id="totalPoints">0</span></p>
     </section>
 
     <nav class="nav-next">

@@ -5,12 +5,18 @@
   <title>Scenario 1: Interdigital Crisis</title>
   <link rel="stylesheet" href="../css/styles.css">
   <script defer src="../js/scenario1.js"></script>
+  <script defer src="../js/script.js"></script>
 </head>
 <body>
   <aside class="sidebar">
     <h2>🧬 COO-Key</h2>
-    <img src="../images/Coo-key.png" alt="COO-Key portrait" class="cookey-pic">
+    <div class="cookey-wrapper">
+      <img src="../images/Coo-key.png" alt="COO-Key portrait" class="cookey-pic">
+      <div id="cookie-quote" class="speech-bubble"></div>
+    </div>
+    <button id="cookie-quote-btn">🔊 Hear from COO-Key</button>
     <p><strong>COO-Key</strong> is the BioForge's Chief Operations Organizer — clipboard ready, bandana blazing, and lab-tested to lead missions.</p>
+    <p><strong>Score:</strong> <span id="sidebarScore">0</span></p>
     <nav>
       <ul>
         <li><a href="../index.html">🏠 Game Overview</a></li>
@@ -40,10 +46,10 @@
       <form id="cellForm">
         <fieldset>
           <legend>Choose all that apply (2 correct):</legend>
-          <label><input type="checkbox" name="cell" value="phagocyte" title="Engulfs pathogens and debris"> Phagocyte</label><br>
-          <label><input type="checkbox" name="cell" value="keratinocyte" title="Restores and reinforces skin barrier"> Keratinocyte</label><br>
-          <label><input type="checkbox" name="cell" value="erythrocyte" title="Transports oxygen in blood"> Erythrocyte</label><br>
-          <label><input type="checkbox" name="cell" value="neuron" title="Transmits electrical signals"> Neuron</label><br>
+          <label><input type="checkbox" name="cell" value="phagocyte"> Phagocyte</label><br>
+          <label><input type="checkbox" name="cell" value="keratinocyte"> Keratinocyte</label><br>
+          <label><input type="checkbox" name="cell" value="erythrocyte"> Erythrocyte</label><br>
+          <label><input type="checkbox" name="cell" value="neuron"> Neuron</label><br>
         </fieldset>
         <button type="submit">Submit</button>
       </form>
@@ -53,6 +59,7 @@
       <h2>🧾 Dispatch Summary</h2>
       <p id="scoreSummary"></p>
       <ul id="feedbackList"></ul>
+      <p><strong>BioForge Output:</strong> iPSCs generated hundreds of responders via mitosis and routed through the CTS.</p>
     </section>
 
     <section>
