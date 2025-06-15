@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("cellForm");
   const bonusForm = document.getElementById("bonusForm");
@@ -6,9 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const feedbackList = document.getElementById("feedbackList");
   const scoreSummary = document.getElementById("scoreSummary");
   const totalPointsDisplay = document.getElementById("totalPoints");
+  const sidebarScoreDisplay = document.getElementById("sidebarScore");
   const bonusFeedback = document.getElementById("bonusFeedback");
 
-  let score = 0;
+  let score = parseInt(localStorage.getItem("bioforgeScore")) || 0;
+  sidebarScoreDisplay.textContent = score;
+  totalPointsDisplay.textContent = score;
+
   let submitted = false;
   let bonusSubmitted = false;
 
@@ -27,12 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
     platelet: "recycled — clotting not required here"
   };
 
-  const overrideQuotes = [
-    "Cardiac confusion? You picked wrong — I dropped in fibroblasts to stabilize the area.",
-    "Sending neurons to a heart fix is wild — I rerouted fibroblasts to support tissue recovery.",
-    "COO-Key override complete. Fibroblasts now en route. Let’s stick to functional fixes, yeah?",
-    "I patched up your picks with fibroblasts — heart work takes heart cells, not impulses!"
-  ];
+  const overridePerCell = {
+    cardiomyocyte: "Cardiomyocytes missing — dispatched to restore contractile function and heartbeat strength.",
+    fibroblast: "Fibroblasts missing — deployed to stabilize and rebuild extracellular matrix in cardiac tissue."
+  };
+
+  const bonusCorrect = "myocarditis";
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -42,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const selected = Array.from(form.elements["cell"]).filter(c => c.checked).map(c => c.value);
     let correctCount = 0;
     let deployedCells = [];
+    feedbackList.innerHTML = "";
 
     selected.forEach(cell => {
       const li = document.createElement("li");
@@ -52,29 +56,35 @@ document.addEventListener("DOMContentLoaded", function () {
         deployedCells.push(cell);
       } else {
         li.style.color = "red";
-        feedbackList.appendChild(li);
       }
+      feedbackList.appendChild(li);
     });
 
-    const missedCells = correctCells.filter(c => !selected.includes(c));
     let overrideText = "";
-    if (missedCells.includes("fibroblast")) {
-      const randomQuote = overrideQuotes[Math.floor(Math.random() * overrideQuotes.length)];
-      overrideText = `<p><strong>🧠 COO-Key Override:</strong> ${randomQuote}</p>`;
+    const missedCells = correctCells.filter(c => !selected.includes(c));
+    if (missedCells.length > 0) {
+      overrideText = "<p><strong>🧠 COO-Key Override:</strong><br>";
+      missedCells.forEach(cell => {
+        overrideText += `💡 ${overridePerCell[cell]}<br>`;
+      });
+      overrideText += "</p>";
     }
 
-    const scienceSummary = deployedCells.map(c => {
-      return `💡 BioForge generated hundreds of ${c}s via mitosis and ${transportSystems[c]}.`;
-    }).join("<br>");
+    const scienceSummary = deployedCells.map(c =>
+      `💡 BioForge generated hundreds of ${c}s via mitosis and ${transportSystems[c]}.`
+    ).join("<br>");
 
     score += correctCount;
+    localStorage.setItem("bioforgeScore", score);
+    sidebarScoreDisplay.textContent = score;
+    totalPointsDisplay.textContent = score;
+
     scoreSummary.innerHTML = `
       <p>✅ You selected ${correctCount} correct responder(s).</p>
       ${scienceSummary}
       ${overrideText}
       <p><strong>Total Score:</strong> ${score}</p>
     `;
-    totalPointsDisplay.textContent = score;
     resultsSection.style.display = "block";
   });
 
@@ -84,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
     bonusSubmitted = true;
 
     const selected = bonusForm.elements["diagnosis"].value;
-    if (selected === "myocarditis") {
+    if (selected === bonusCorrect) {
       bonusFeedback.innerHTML = "🎉 Correct! Myocarditis identified. +2 bonus points.";
       bonusFeedback.style.color = "green";
       score += 2;
@@ -93,6 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
       bonusFeedback.style.color = "red";
     }
 
+    localStorage.setItem("bioforgeScore", score);
+    sidebarScoreDisplay.textContent = score;
     totalPointsDisplay.textContent = score;
   });
 });

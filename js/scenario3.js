@@ -5,9 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const feedbackList = document.getElementById("feedbackList");
   const scoreSummary = document.getElementById("scoreSummary");
   const totalPointsDisplay = document.getElementById("totalPoints");
+  const sidebarScoreDisplay = document.getElementById("sidebarScore");
   const bonusFeedback = document.getElementById("bonusFeedback");
 
-  let score = 0;
+  let score = parseInt(localStorage.getItem("bioforgeScore")) || 0;
+  sidebarScoreDisplay.textContent = score;
+  totalPointsDisplay.textContent = score;
+
   let submitted = false;
   let bonusSubmitted = false;
 
@@ -15,22 +19,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const tooltips = {
     melanocyte: "Melanocytes produce melanin to absorb and block harmful UV rays.",
     keratinocyte: "Keratinocytes repair skin and rebuild the protective barrier.",
-    neuron: "Neurons transmit sensory data — not used for healing sunburn.",
+    neuron: "Neurons transmit sensory signals — not used for healing sunburn.",
     platelet: "Platelets help with clotting but are not needed here."
   };
 
   const transportSystems = {
     melanocyte: "migrated to epidermis to reinforce UV shielding",
     keratinocyte: "generated in the basal layer and migrated upward",
-    neuron: "flagged for apoptosis — irrelevant to surface burns",
+    neuron: "flagged for apoptosis",
     platelet: "rerouted to circulatory standby — no bleeding detected"
   };
 
-  const overrideQuotes = [
-    "Whoops — neurons again? This isn’t a pain puzzle. I rerouted keratinocytes for healing.",
-    "No blood, no platelets. I deployed keratinocytes instead to do the real work.",
-    "Let’s not send neurons to do a skin cell’s job. Healing crew patched in!"
-  ];
+  const overridePerCell = {
+    melanocyte: "Melanocytes missing — deployed to restore melanin protection and block UV damage.",
+    keratinocyte: "Keratinocytes missing — dispatched to repair skin barrier and support healing."
+  };
+
+  const bonusCorrect = "sunburn";
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -47,33 +52,39 @@ document.addEventListener("DOMContentLoaded", function () {
       li.textContent = `${cell.charAt(0).toUpperCase() + cell.slice(1)}: ${tooltips[cell]}`;
       if (correctCells.includes(cell)) {
         li.style.color = "green";
-        deployedCells.push(cell);
         correctCount++;
+        deployedCells.push(cell);
       } else {
         li.style.color = "red";
       }
       feedbackList.appendChild(li);
     });
 
-    const missedCells = correctCells.filter(c => !selected.includes(c));
     let overrideText = "";
-    if (missedCells.includes("keratinocyte")) {
-      const quote = overrideQuotes[Math.floor(Math.random() * overrideQuotes.length)];
-      overrideText = `<p><strong>🧠 COO-Key Override:</strong> ${quote}</p>`;
+    const missedCells = correctCells.filter(c => !selected.includes(c));
+    if (missedCells.length > 0) {
+      overrideText = "<p><strong>🧠 COO-Key Override:</strong><br>";
+      missedCells.forEach(cell => {
+        overrideText += `💡 ${overridePerCell[cell]}<br>`;
+      });
+      overrideText += "</p>";
     }
 
     const scienceSummary = deployedCells.map(c =>
-      `💡 BioForge generated ${c}s via mitosis and ${transportSystems[c]}.`
+      `💡 BioForge generated hundreds of ${c}s via mitosis and ${transportSystems[c]}.`
     ).join("<br>");
 
     score += correctCount;
+    localStorage.setItem("bioforgeScore", score);
+    sidebarScoreDisplay.textContent = score;
+    totalPointsDisplay.textContent = score;
+
     scoreSummary.innerHTML = `
       <p>✅ You selected ${correctCount} correct responder(s).</p>
       ${scienceSummary}
       ${overrideText}
       <p><strong>Total Score:</strong> ${score}</p>
     `;
-    totalPointsDisplay.textContent = score;
     resultsSection.style.display = "block";
   });
 
@@ -83,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
     bonusSubmitted = true;
 
     const selected = bonusForm.elements["diagnosis"].value;
-    if (selected === "sunburn") {
+    if (selected === bonusCorrect) {
       bonusFeedback.innerHTML = "🎉 Correct! Sunburn identified. +2 bonus points.";
       bonusFeedback.style.color = "green";
       score += 2;
@@ -92,6 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
       bonusFeedback.style.color = "red";
     }
 
+    localStorage.setItem("bioforgeScore", score);
+    sidebarScoreDisplay.textContent = score;
     totalPointsDisplay.textContent = score;
   });
 });
