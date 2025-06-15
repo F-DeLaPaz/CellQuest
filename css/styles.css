@@ -1,1 +1,74 @@
-
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  min-height: 100vh;
+}
+.sidebar {
+  background-color: #5c5b99;
+  color: #fff;
+  padding: 20px;
+  width: 250px;
+  box-sizing: border-box;
+}
+.sidebar h2 {
+  color: #fff;
+}
+.sidebar a {
+  color: #f0f0f0;
+  text-decoration: none;
+}
+.sidebar a:hover {
+  text-decoration: underline;
+}
+.cookey-pic {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+main {
+  flex-grow: 1;
+  padding: 40px;
+  box-sizing: border-box;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+header, section {
+  margin-bottom: 30px;
+}
+.speech-bubble {
+  position: absolute;
+  top: 72px;
+  left: 75%;
+  width: 160px;
+  background: #ffffff;
+  color: #333;
+  border: 2px solid #5c5b99;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 1rem;
+  font-style: italic;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 10;
+}
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #ffffff;
+}
+.cookey-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
