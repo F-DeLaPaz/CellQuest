@@ -4,13 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const resultsSection = document.getElementById("results");
   const feedbackList = document.getElementById("feedbackList");
   const scoreSummary = document.getElementById("scoreSummary");
-  const totalPointsDisplay = document.getElementById("totalPoints");
-  const sidebarScoreDisplay = document.getElementById("sidebarScore");
   const bonusFeedback = document.getElementById("bonusFeedback");
-
-  let score = parseInt(localStorage.getItem("bioforgeScore")) || 0;
-  sidebarScoreDisplay.textContent = score;
-  totalPointsDisplay.textContent = score;
 
   let submitted = false;
   let bonusSubmitted = false;
@@ -74,16 +68,10 @@ document.addEventListener("DOMContentLoaded", function () {
       `💡 BioForge generated hundreds of ${c}s via mitosis and ${transportSystems[c]}.`
     ).join("<br>");
 
-    score += correctCount;
-    localStorage.setItem("bioforgeScore", score);
-    sidebarScoreDisplay.textContent = score;
-    totalPointsDisplay.textContent = score;
-
     scoreSummary.innerHTML = `
       <p>✅ You selected ${correctCount} correct responder(s).</p>
       ${scienceSummary}
       ${overrideText}
-      <p><strong>Total Score:</strong> ${score}</p>
     `;
     resultsSection.style.display = "block";
   });
@@ -95,16 +83,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const selected = bonusForm.elements["diagnosis"].value;
     if (selected === bonusCorrect) {
-      bonusFeedback.innerHTML = "🎉 Correct! Athlete’s Foot identified. +2 bonus points.";
+      bonusFeedback.innerHTML = "🎉 Correct! Athlete’s Foot identified.";
       bonusFeedback.style.color = "green";
-      score += 2;
     } else {
-      bonusFeedback.innerHTML = "❌ Incorrect diagnosis. No bonus added.";
+      bonusFeedback.innerHTML = "❌ Incorrect diagnosis.";
       bonusFeedback.style.color = "red";
     }
-
-    localStorage.setItem("bioforgeScore", score);
-    sidebarScoreDisplay.textContent = score;
-    totalPointsDisplay.textContent = score;
   });
 });

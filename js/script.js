@@ -22,12 +22,3 @@ document.getElementById("cookie-quote-btn").addEventListener("click", () => {
   audioPlayer.src = random.audio;
   audioPlayer.play();
 });
-
-// Cumulative Score Initialization Logic
-document.addEventListener("DOMContentLoaded", function () {
-  const sidebarScoreDisplay = document.getElementById("sidebarScore");
-  if (sidebarScoreDisplay) {
-    let currentScore = parseInt(localStorage.getItem("bioforgeScore")) || 0;
-    sidebarScoreDisplay.textContent = currentScore;
-  }
-});
