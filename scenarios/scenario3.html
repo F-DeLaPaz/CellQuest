@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scenario 3: Sunburn Recovery</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script defer src="../js/scenario3.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>🧬 COO-Key</h2>
+    <img src="../images/Coo-key.png" alt="COO-Key portrait" class="cookey-pic">
+    <p><strong>COO-Key</strong> is the BioForge's Chief Operations Organizer — clipboard ready, bandana blazing, and lab-tested to lead missions.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Game Overview</a></li>
+        <li><a href="scenario3.html">☀️ Scenario 3</a></li>
+        <li><a href="../glossary.html">📚 Glossary</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main>
+    <section>
+      <h2>☀️ Alert From: CTS Node 3A</h2>
+      <p>Symptoms reported: Redness, pain, and peeling on the upper back after prolonged sun exposure.</p>
+    </section>
+
+    <header>
+      <h1>Scenario 3: Sunburn Recovery</h1>
+    </header>
+
+    <section>
+      <h2>📋 Mission Brief</h2>
+      <p>What cells should be generated via mitosis to begin the repair and protection of UV-damaged skin?</p>
+    </section>
+
+    <section>
+      <h2>🧪 Select Your Responders</h2>
+      <form id="cellForm">
+        <fieldset>
+          <legend>Choose all that apply (2 correct):</legend>
+          <label><input type="checkbox" name="cell" value="melanocyte" title="Produces melanin to shield skin from UV damage"> Melanocyte</label><br>
+          <label><input type="checkbox" name="cell" value="keratinocyte" title="Rebuilds and protects skin barrier"> Keratinocyte</label><br>
+          <label><input type="checkbox" name="cell" value="neuron" title="Transmits sensory signals"> Neuron</label><br>
+          <label><input type="checkbox" name="cell" value="platelet" title="Involved in blood clotting"> Platelet</label><br>
+        </fieldset>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <section id="results" style="display:none;">
+      <h2>🧾 Dispatch Summary</h2>
+      <p id="scoreSummary"></p>
+      <ul id="feedbackList"></ul>
+      <p><strong>BioForge Output:</strong> 2 cell types generated via mitosis and dispatched to UV-exposed zone.</p>
+    </section>
+
+    <section>
+      <h2>🎲 Bonus Diagnosis</h2>
+      <form id="bonusForm">
+        <p>Identify the condition for bonus points:</p>
+        <label><input type="radio" name="diagnosis" value="sunburn"> First-degree Sunburn</label><br>
+        <label><input type="radio" name="diagnosis" value="skin_cancer"> Skin Cancer</label><br>
+        <label><input type="radio" name="diagnosis" value="measles"> Measles</label><br>
+        <label><input type="radio" name="diagnosis" value="psoriasis"> Psoriasis</label><br>
+        <button type="submit">Submit Diagnosis</button>
+      </form>
+      <p id="bonusFeedback"></p>
+    </section>
+
+    <section>
+      <h2>🏅 Score</h2>
+      <p>Total Points: <span id="totalPoints">0</span></p>
+    </section>
+
+    <nav class="nav-next">
+      <a href="scenario4.html">Next Scenario ➡️</a>
+    </nav>
+  </main>
+</body>
+</html>

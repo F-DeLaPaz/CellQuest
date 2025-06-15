@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scenario 1: Interdigital Crisis</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script defer src="../js/scenario1.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>🧬 COO-Key</h2>
+    <img src="../images/Coo-key.png" alt="COO-Key portrait" class="cookey-pic">
+    <p><strong>COO-Key</strong> is the BioForge's Chief Operations Organizer — clipboard ready, bandana blazing, and lab-tested to lead missions.</p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Game Overview</a></li>
+        <li><a href="scenario1.html">🚨 Scenario 1</a></li>
+        <li><a href="../glossary.html">📚 Glossary</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main>
+    <section>
+      <h2>🚨 Alert From: CTS Surveillance Node 7B</h2>
+      <p>Symptoms reported: Itching, redness, and mild skin breakdown between toes. Suspected fungal breach.</p>
+    </section>
+
+    <header>
+      <h1>Scenario 1: Interdigital Crisis</h1>
+    </header>
+
+    <section>
+      <h2>📋 Mission Brief</h2>
+      <p>Using mitosis and your knowledge of cell function, which cells should be generated at the BioForge to respond to this situation?</p>
+    </section>
+
+    <section>
+      <h2>🧪 Select Your Responders</h2>
+      <form id="cellForm">
+        <fieldset>
+          <legend>Choose all that apply (2 correct):</legend>
+          <label><input type="checkbox" name="cell" value="phagocyte" title="Engulfs pathogens and debris"> Phagocyte</label><br>
+          <label><input type="checkbox" name="cell" value="keratinocyte" title="Restores and reinforces skin barrier"> Keratinocyte</label><br>
+          <label><input type="checkbox" name="cell" value="erythrocyte" title="Transports oxygen in blood"> Erythrocyte</label><br>
+          <label><input type="checkbox" name="cell" value="neuron" title="Transmits electrical signals"> Neuron</label><br>
+        </fieldset>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+
+    <section id="results" style="display:none;">
+      <h2>🧾 Dispatch Summary</h2>
+      <p id="scoreSummary"></p>
+      <ul id="feedbackList"></ul>
+    </section>
+
+    <section>
+      <h2>🎲 Bonus Diagnosis</h2>
+      <form id="bonusForm">
+        <p>Do you want to risk for bonus points?</p>
+        <label><input type="radio" name="diagnosis" value="athletes_foot"> Athlete’s Foot (Tinea Pedis)</label><br>
+        <label><input type="radio" name="diagnosis" value="psoriasis"> Psoriasis</label><br>
+        <label><input type="radio" name="diagnosis" value="eczema"> Eczema</label><br>
+        <label><input type="radio" name="diagnosis" value="ingrown_nail"> Ingrown Nail</label><br>
+        <button type="submit">Submit Diagnosis</button>
+      </form>
+      <p id="bonusFeedback"></p>
+    </section>
+
+    <section>
+      <h2>🏅 Score</h2>
+      <p>Total Points: <span id="totalPoints">0</span></p>
+    </section>
+
+    <nav class="nav-next">
+      <a href="scenario2.html">Next Scenario ➡️</a>
+    </nav>
+  </main>
+</body>
+</html>
